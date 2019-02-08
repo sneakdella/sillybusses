@@ -21,4 +21,6 @@ import sb.views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', sb.views.index, name='index'),
+    url(r'^search/$', sb.views.search, name='search'),
+    url(r'^upload/$', sb.views.upload, name='upload'),
 ]

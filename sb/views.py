@@ -14,3 +14,27 @@ def index (request):
 			'test': test,
 		}
 	)
+
+def search (request):
+	""" Renders Search Page """
+	test = "test"
+
+	return render (
+		request,
+		'sb/search.html',
+		{
+			'test': test,
+		}
+	)
+
+def upload (request):
+	""" Renders upload Page """
+	test = "test"
+
+	return render (
+		request,
+		'sb/upload.html',
+		{
+			'test': test,
+		}
+	)
