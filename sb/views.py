@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .forms import SyllabusForm
 
 # Create your views here.
 
@@ -31,10 +32,13 @@ def upload (request):
 	""" Renders upload Page """
 	test = "test"
 
-	return render (
-		request,
-		'sb/upload.html',
-		{
-			'test': test,
-		}
-	)
+	if request.method == 'POST':
+		form = SyllabusForm(request.POST, request.FILES)
+		if form.is_valid():
+			form.save()
+			return redirect('index')
+	else:
+		form = SyllabusForm()
+	return render(request, 'sb/upload.html', {
+		'form': form
+    })

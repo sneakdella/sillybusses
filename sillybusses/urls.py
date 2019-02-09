@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 
 import sb.views
 
@@ -23,4 +25,7 @@ urlpatterns = [
     url(r'^$', sb.views.index, name='index'),
     url(r'^search/$', sb.views.search, name='search'),
     url(r'^upload/$', sb.views.upload, name='upload'),
-]
+] 
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
